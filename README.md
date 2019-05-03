@@ -1,2 +1,6 @@
 # abcd-selfreg-factors
-code, data, and figures used to create 2019 SANS poster entitled "Uncovering a latent factor structure underlying pre-adolescent self-regulation and its neural substrates"
+code, data, and figures used to create 2019 SANS poster entitled _Uncovering a latent factor structure underlying pre-adolescent self-regulation and its neural substrates_
+## 1. Principal component analysis of self-regulation measures
+`pca_etc.py` addresses missing data (rampant in the ABCD database) via [SoftImpute](https://github.com/iskandr/fancyimpute/blob/master/fancyimpute/soft_impute.py), which applies an algorithm developed by [Rahul Mazumder, Trevor Hastie, Robert Tibshirani](http://www.jmlr.org/papers/v11/mazumder10a.html) that uses a soft-thresholded SVD to replace missing values iteratively. It then performs PCA on the imputed, normalized data, and produces a scree plot, along with item and subject factor loadings.
+## 2. Individual differences analyses in brain and behavior
+`brainXbehavior.py` computes mean beta-values across runs of the ABCD SST task's correct stop > incorrect stop contrast, and assesses relationships between these beta values and (1) each factor's loadings, (2) demographic variables, and (3) the sleep disturbance measure, across subjects using a permuted OLS analysis, correcting for multiple comparisons via max-type procedure. Then, Spearman rank correlations are computed between each subjects' factor loadings and scores on the sleep disturbances scale, as is the corrected alpha value for _p_ < 0.05.
